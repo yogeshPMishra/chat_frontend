@@ -17,7 +17,7 @@ const append = (message,position)=>{
 
 const name = prompt('Enter your name to join');
 
-if(name){
+if(name != null || name != undefined){
     socket.emit('new-user-joined',name) 
 
     socket.on('user-joined',(name)=>{
@@ -41,7 +41,7 @@ if(name){
     })
 }
 else{
-    
+
 }
 
 
