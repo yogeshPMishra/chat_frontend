@@ -17,24 +17,33 @@ const append = (message,position)=>{
 
 const name = prompt('Enter your name to join');
 
-socket.emit('new-user-joined',name) 
+if(name){
+    socket.emit('new-user-joined',name) 
 
-socket.on('user-joined',(name)=>{
-    append(`${name} joined the chat`,`left`)
-})
+    socket.on('user-joined',(name)=>{
+        append(`${name} joined the chat`,`left`)
+    })
 
-socket.on('receive',(data) =>{
-    append(`${data.name}: ${data.message}`,`left`)
-})
+    socket.on('receive',(data) =>{
+        append(`${data.name}: ${data.message}`,`left`)
+    })
 
-form.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const message = messageInput.value;
-    append(`You : ${message}`,'right');
-    socket.emit('send',message)
-    messageInput.value = ""
- })
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const message = messageInput.value;
+        append(`You : ${message}`,'right');
+        socket.emit('send',message)
+        messageInput.value = ""
+     })
+    
+    socket.on('left',name =>{
+        append(`${name} left the chat`, 'left')
+    })
+}
+else{
+    
+}
 
-socket.on('left',name =>{
-    append(`${name} left the chat`, 'left')
-})
+
+
+
