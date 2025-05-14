@@ -1,21 +1,49 @@
+
+*{
+   padding: 0;
+   margin: 0;
+}
+
 .logo{
-    display: block;
     margin: auto;
     width: 50px;
     height: 50px;
 }
 body{
-    background-image: linear-gradient(rgb(209, 209, 209)rgb(254, 180, 254)e);
-    height: 100vh;
+    overflow-y: hidden;
 }
+.wrapper{
+    margin: 10px;
+    display: flex;
+}
+.img-wrapper{
+    width: 60%;
+}
+.img-wrapper img{
+    height: 100vh;
+    width: 100%;
+}
+.chat-wrapper{ 
+    height: 100vh;
+    border-radius: 5px;
+    width: 40%;
+}
+ nav{
+   background-image: linear-gradient(rgb(11, 221, 221),rgb(0, 225, 255));
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
 .container{
-    max-width:955px;
-    height: 70vh;
-    border: 2px solid black;
+    height: 85vh;
+    max-height: 95vh;
+    border: 1px solid #389edc;
     overflow-y: auto;
     margin-bottom: 23px;
-    background-image: linear-gradient(rgb(195, 79, 189),purple);
+    background-image: linear-gradient(rgb(79, 158, 195),purple);
     margin: auto;
+    border-bottom: none;
 }
 .message{
   background-color: rgb(37, 22, 73);
@@ -28,6 +56,8 @@ body{
    float: left;
    clear: both;
    border-radius: 0px 10px 5px 10px;
+   color:rgb(37, 22, 73);
+   background-color:white;
 }
 .right{
    float:right;
@@ -36,21 +66,40 @@ body{
 }
 #send-container{
     text-align: center;
-    max-width: 985px;
     width: 100%;
-    display: block;
+    display: flex;
     margin: auto;
 
 }
 #message-inp{
-    width: 92%;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 34px;
+    width: 85%;
+    border: 1px solid #389edc;
+}
+input:focus{
+    border: 1px solid #389edc !important;
+    outline: none;
 }
 .submit{
     cursor: pointer;
-    border: 2px sold black;
-    border-radius: 5px;
-    height: 34px;
+    border: none !important;
+    /* border-radius: 5px; */
+    height: 100%;
+    width: 15%;
+    padding: 10px;
+    background: #389edc;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .img-wrapper{
+        display: none;
+    }
+    .img-wrapper, .chat-wrapper {
+        width: 100%;
+    }
+    .message {
+        width: 80%;
+    }
 }

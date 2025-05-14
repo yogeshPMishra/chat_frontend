@@ -15,13 +15,13 @@ const append = (message,position)=>{
    }
 }
 
-const name = prompt('Enter your name to join');
+const username = prompt('Enter your username to join');
 
-if(name != null || name != undefined){
-    socket.emit('new-user-joined',name) 
+if(username && username !== null && username !== undefined ){
+    socket.emit('new-user-joined',username) 
 
-    socket.on('user-joined',(name)=>{
-        append(`${name} joined the chat`,`left`)
+    socket.on('user-joined',(username)=>{
+        append(`${username} joined the chat`,`left`)
     })
 
     socket.on('receive',(data) =>{
@@ -36,12 +36,14 @@ if(name != null || name != undefined){
         messageInput.value = ""
      })
     
-    socket.on('left',name =>{
-        append(`${name} left the chat`, 'left')
+    socket.on('left',(username) =>{
+        if(username && username !== null && username !== undefined ){
+            append(`${username} left the chat`, 'left')
+        }
     })
 }
 else{
-
+   alert("Username is required");
 }
 
 
